@@ -1,5 +1,4 @@
 [tool.pdm.build]
-setup-script = "build.py"
 run-setuptools = true
 is-purelib = false
 
