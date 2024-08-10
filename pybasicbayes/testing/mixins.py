@@ -54,7 +54,7 @@ class BasicTester(DistributionTester):
 
     def _check_stats(self,s1,s2):
         if isinstance(s1,np.ndarray):
-            if s1.dtype == np.object:
+            if s1.dtype == object:
                 assert all(np.allclose(t1,t2) for t1, t2 in zip(s1,s2))
             else:
                 assert np.allclose(s1,s2)

@@ -1,3 +1,8 @@
 *.pyc
 *.pyo
 /tags
+.eggs
+build
+dist
+.pdm-python
+.venv

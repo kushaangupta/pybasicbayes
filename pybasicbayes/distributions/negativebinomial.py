@@ -479,7 +479,7 @@ class NegativeBinomialIntegerR(NegativeBinomialFixedR, GibbsSampling, MaxLikelih
 
     def set_r_discrete_distn(self,r_discrete_distn):
         if r_discrete_distn is not None:
-            r_discrete_distn = np.asarray(r_discrete_distn,dtype=np.float)
+            r_discrete_distn = np.asarray(r_discrete_distn,dtype=float)
             r_support, = np.where(r_discrete_distn)
             r_probs = r_discrete_distn[r_support]
             r_probs /= r_probs.sum()

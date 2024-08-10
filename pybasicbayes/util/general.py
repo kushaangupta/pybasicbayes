@@ -93,7 +93,7 @@ def match_by_overlap(a,b):
     scores = np.zeros((len(ais),len(bjs)))
     for i,ai in enumerate(ais):
         for j,bj in enumerate(bjs):
-            scores[i,j] = np.dot(np.array(a==ai,dtype=np.float),b==bj)
+            scores[i,j] = np.dot(np.array(a==ai,dtype=float),b==bj)
 
     flip = len(bjs) > len(ais)
 
@@ -306,7 +306,7 @@ class ObjArray(np.ndarray):
         if isinstance(lst,(np.ndarray,float,int)):
             return lst
         else:
-            return np.ndarray.__new__(cls,len(lst),dtype=np.object)
+            return np.ndarray.__new__(cls,len(lst),dtype=object)
 
     def __init__(self,lst):
         if not isinstance(lst,(np.ndarray,float,int)):

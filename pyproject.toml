@@ -1,0 +1,41 @@
+[tool.pdm.build]
+setup-script = "build.py"
+run-setuptools = true
+is-purelib = false
+
+[project]
+name = "pybasicbayes"
+version = "0.2.4"
+description = "Basic utilities for Bayesian inference"
+keywords = ["bayesian", "inference", "mcmc", "variational inference", "mean field", "vb"]
+readme = "README.md"
+authors = [
+    {name = "Matthew James Johnson", email = "mattjj@csail.mit.edu"},
+]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python",
+]
+dependencies = [
+    "future>=1.0.0",
+    "matplotlib",
+    "nose",
+    "numpy<2.0.0",
+    "scipy",
+]
+requires-python = ">=3.9,<3.13"
+
+[project.urls]
+Homepage = "http://github.com/mattjj/pybasicbayes"
+
+[build-system]
+requires = ["pdm-backend", "Cython", "numpy<2.0.0"]
+build-backend = "pdm.backend"
+
+[tool.ruff]
+include = ["pybasicbayes/**/*.py*"]
+
+[tool.ruff.lint]
+select = [
+    "NPY"
+]

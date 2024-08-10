@@ -8,7 +8,6 @@ import scipy.stats as stats
 import scipy.special as special
 import scipy.linalg
 from scipy.special import logsumexp
-from numpy.core.umath_tests import inner1d
 
 from .general import any_none, blockarray
 
@@ -121,7 +120,7 @@ def sample_gaussian(mu=None,Sigma=None,J=None,h=None):
         return scipy.linalg.solve_triangular(L,x,lower=True,trans='T') \
             + dpotrs(L,h,lower=True)[0]
 
-def sample_truncated_gaussian(mu=0, sigma=1, lb=-np.Inf, ub=np.Inf):
+def sample_truncated_gaussian(mu=0, sigma=1, lb=-np.inf, ub=np.inf):
     """
     Sample a truncated normal with the specified params. This
     is not the most stable way but it works as long as the
@@ -333,7 +332,7 @@ def multivariate_t_loglik(y,nu,mu,lmbda):
     ys = scipy.linalg.solve_triangular(L,yc.T,overwrite_b=True,lower=True)
     return scipy.special.gammaln((nu+d)/2.) - scipy.special.gammaln(nu/2.) \
             - (d/2.)*np.log(nu*np.pi) - np.log(L.diagonal()).sum() \
-            - (nu+d)/2.*np.log1p(1./nu*inner1d(ys.T,ys.T))
+            - (nu+d)/2.*np.log1p(1./nu*np.einsum('ij,ij->i',ys.T,ys.T))
 
 def beta_predictive(priorcounts,newcounts):
     prior_nsuc, prior_nfail = priorcounts
