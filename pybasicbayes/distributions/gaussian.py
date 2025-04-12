@@ -361,7 +361,7 @@ class Gaussian(
 
             # see Eqs. 10.64, 10.67, and 10.71 in Bishop
             return self._loglmbdatilde()/2 - D/(2*kappa_n) - nu_n/2 * \
-                inner1d(xs.T,xs.T) - D/2*np.log(2*np.pi)
+                np.einsum('ij,ij->i', xs.T, xs.T) - D/2*np.log(2*np.pi)
         else:
             D = self.mu_mf.shape[0]
 
